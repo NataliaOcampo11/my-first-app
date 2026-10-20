@@ -4,67 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Clicks | Colegio Bolívar</title>
+
     <style>
+        /* Configuración general */
         * {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0b1f3a, #174a7e);
-            color: white;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
+            background: #07111f;
+            color: #f1f5f9;
             min-height: 100vh;
-            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            padding: 20px;
         }
 
+        /* Tarjeta principal */
         .container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            width: 90%;
+            background: #101e32;
+            border: 1px solid #203751;
+            border-radius: 24px;
+            padding: 45px 35px;
+            width: 100%;
             max-width: 450px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            box-shadow: 0 0 35px rgba(0, 195, 255, 0.08);
         }
 
+        /* Encabezado */
         h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 27px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 12px;
         }
 
         .subtitle {
-            color: #d4e5f7;
-            margin-bottom: 30px;
+            font-size: 15px;
+            color: #94a9c4;
+            margin-bottom: 35px;
         }
 
+        /* Contador */
         #contador {
-            font-size: 80px;
-            font-weight: bold;
-            margin: 25px 0;
+            font-size: 90px;
+            font-weight: 800;
+            color: #00f5ff;
+            text-shadow: 0 0 18px rgba(0, 245, 255, 0.4);
+            margin: 25px 0 35px;
+            font-variant-numeric: tabular-nums;
+            transition: transform 0.2s ease;
         }
 
+        /* Botones */
         button {
-            border: none;
-            border-radius: 10px;
-            padding: 15px 25px;
-            font-size: 18px;
-            font-weight: bold;
+            font-family: inherit;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.15s, background 0.15s;
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
 
         #clickButton {
-            background: #f4c542;
-            color: #142b45;
             width: 100%;
+            padding: 17px 20px;
+            background: #00f5ff;
+            color: #07111f;
+            border: 1px solid #00f5ff;
+            font-size: 17px;
+            box-shadow: 0 0 18px rgba(0, 245, 255, 0.25);
         }
 
         #clickButton:hover {
-            background: #ffda6b;
-            transform: scale(1.03);
+            background: #72fbff;
+            box-shadow: 0 0 28px rgba(0, 245, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         #clickButton:active {
@@ -72,45 +92,61 @@
         }
 
         #resetButton {
+            margin-top: 18px;
+            padding: 12px 20px;
             background: transparent;
-            color: white;
-            border: 1px solid white;
-            margin-top: 15px;
+            color: #ff5c8a;
+            border: 1px solid #ff5c8a;
             font-size: 14px;
-            padding: 10px 20px;
         }
 
         #resetButton:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 92, 138, 0.12);
+            box-shadow: 0 0 15px rgba(255, 92, 138, 0.2);
         }
 
+        /* Pie de página */
         .footer {
-            margin-top: 25px;
+            margin-top: 30px;
             font-size: 12px;
-            color: #d4e5f7;
+            color: #7186a3;
+            letter-spacing: 0.5px;
+        }
+
+        /* Adaptación para pantallas pequeñas */
+        @media (max-width: 480px) {
+            .container {
+                padding: 35px 22px;
+            }
+
+            h1 {
+                font-size: 23px;
+            }
+
+            #contador {
+                font-size: 72px;
+            }
         }
     </style>
 </head>
-<body>
 
+<body>
     <main class="container">
         <h1>COLEGIO BOLÍVAR</h1>
         <p class="subtitle">Contador de clicks para eventos</p>
 
-        <div id="contador" aria-live="polite">0</div>
+        <div id="contador" aria-live="polite" aria-atomic="true">0</div>
 
         <button id="clickButton" onclick="incrementarContador()">
             ¡Haz click!
         </button>
-
-        <br>
 
         <button id="resetButton" onclick="reiniciarContador()">
             Reiniciar contador
         </button>
 
         <p class="footer">
-            Cada click cuenta. ¡Participa en el evento!
+            CADA CLICK CUENTA · ¡PARTICIPA EN EL EVENTO!
         </p>
     </main>
 
@@ -120,6 +156,13 @@
         function incrementarContador() {
             clicks++;
             actualizarContador();
+
+            const contador = document.getElementById("contador");
+            contador.style.transform = "scale(1.12)";
+
+            setTimeout(() => {
+                contador.style.transform = "scale(1)";
+            }, 150);
         }
 
         function reiniciarContador() {
@@ -131,6 +174,5 @@
             document.getElementById("contador").textContent = clicks;
         }
     </script>
-
 </body>
 </html>
