@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Clicks | Colegio Bolívar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0b1f3a, #174a7e);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #d4e5f7;
+            margin-bottom: 30px;
+        }
+
+        #contador {
+            font-size: 80px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 15px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.15s, background 0.15s;
+        }
+
+        #clickButton {
+            background: #f4c542;
+            color: #142b45;
+            width: 100%;
+        }
+
+        #clickButton:hover {
+            background: #ffda6b;
+            transform: scale(1.03);
+        }
+
+        #clickButton:active {
+            transform: scale(0.97);
+        }
+
+        #resetButton {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            margin-top: 15px;
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+
+        #resetButton:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #d4e5f7;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <h1>COLEGIO BOLÍVAR</h1>
+        <p class="subtitle">Contador de clicks para eventos</p>
+
+        <div id="contador" aria-live="polite">0</div>
+
+        <button id="clickButton" onclick="incrementarContador()">
+            ¡Haz click!
+        </button>
+
+        <br>
+
+        <button id="resetButton" onclick="reiniciarContador()">
+            Reiniciar contador
+        </button>
+
+        <p class="footer">
+            Cada click cuenta. ¡Participa en el evento!
+        </p>
+    </main>
+
+    <script>
+        let clicks = 0;
+
+        function incrementarContador() {
+            clicks++;
+            actualizarContador();
+        }
+
+        function reiniciarContador() {
+            clicks = 0;
+            actualizarContador();
+        }
+
+        function actualizarContador() {
+            document.getElementById("contador").textContent = clicks;
+        }
+    </script>
+
+</body>
+</html>
