@@ -4,48 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Contador de Clicks | Colegio Bolívar</title>
-
+    <title>Click Speed Challenge</title>
     <link rel="stylesheet" href="style.css">
-    <script src="actions.js" defer></script>
 </head>
-
 <body>
-    <main class="container">
-        <h1>COLEGIO BOLÍVAR</h1>
 
-        <p class="subtitle" id="tituloEvento">
-            Contador de clicks para eventos
+    <div class="container">
+        <h1>Click Speed Challenge</h1>
+
+        <div class="settings">
+            <label for="duration">Selecciona la duración:</label>
+            <select id="duration">
+                <option value="10">10 segundos</option>
+                <option value="20">20 segundos</option>
+                <option value="30">30 segundos</option>
+            </select>
+        </div>
+
+        <div class="timer" id="timer">00.000</div>
+
+        <div class="counter">
+            Clicks: <span id="clickCount">0</span>
+        </div>
+
+        <button id="clickButton" disabled>¡HAZ CLICK!</button>
+        <button id="startButton">Iniciar partida</button>
+
+        <div id="result"></div>
+
+        <p class="instructions">
+            Presiona iniciar y consigue la mayor cantidad de clicks
+            antes de que termine el tiempo.
         </p>
+    </div>
 
-        <label class="input-label" for="nuevoTitulo">
-            Personaliza el título del evento
-        </label>
-
-        <input
-            type="text"
-            id="nuevoTitulo"
-            class="title-input"
-            placeholder="Escribe el nombre del evento..."
-            value="Contador de clicks para eventos"
-            maxlength="100"
-        >
-
-        <div id="contador" aria-live="polite" aria-atomic="true">0</div>
-
-        <button id="clickButton" type="button">
-            ¡Haz click!
-        </button>
-
-        <button id="resetButton" type="button">
-            Reiniciar Contador
-        </button>
-
-        <p class="footer">
-            CADA CLICK CUENTA<br>
-            ¡PARTICIPA EN EL EVENTO!
-        </p>
-    </main>
+    <script src="script.js"></script>
 </body>
 </html>
